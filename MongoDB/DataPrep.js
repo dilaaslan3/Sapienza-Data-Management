@@ -138,7 +138,7 @@ db.winner_data.updateMany(
 db.winner_data.insertOne({ years: 2023, winner: "Sweden" });
 
 
-// Adding winner flag to song_data_winner table
+// Adding winner flag to song_data_winner collection
 
 // Step 1: Perform the left join between song_data and winner_data
 db.song_data.aggregate([
@@ -177,8 +177,3 @@ db.song_data_winner.updateMany(
     {},
     { $unset: { "winner_data": "" } }
 );
-
-// Verification: Optional step to ensure all documents have been processed correctly
-db.song_data_winner.find().forEach(doc => {
-    printjson(doc);
-});
